@@ -1,0 +1,19 @@
+###
+@url = http://localhost:3000
+
+###
+GET {{url}}/
+###
+GET {{url}}/books/second/
+###
+GET {{url}}/books/second/1
+###
+GET {{url}}/books/second/2
+###
+GET {{url}}/books/second/3
+###
+GET {{url}}/books/second/4
+###
+GET {{url}}/books/second/5
+###
+GET {{url}}/
