@@ -10,7 +10,7 @@ export class BooksService {
     return new Promise((resolve) => {
       resolve(this.books);
       console.log('Books fetched successfully');
-      console.log(this.books);
+      // console.log(this.books);
     });
   }
   getBook(bookID: number): Promise<any> {
