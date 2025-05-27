@@ -3,17 +3,61 @@
 
 ###
 GET {{url}}/
+
+// Home routes Worked 😎😎😎
 ###
-GET {{url}}/books/second/
+GET {{url}}/books/all/
 ###
-GET {{url}}/books/second/1
+GET {{url}}/books/get/1
 ###
-GET {{url}}/books/second/2
+DELETE {{url}}/books/delete/2/
+
 ###
-GET {{url}}/books/second/3
+POST {{url}}/books/create/
+Content-Type: application/json
+
+{
+    "title": "New Book Name",
+    "description": "New book description.",
+    "author": "Author Name"
+}
+
 ###
-GET {{url}}/books/second/4
+PATCH {{url}}/books/update/3
+Content-Type: application/json
+
+{
+  "title": "Updated Book Name",
+  "description": "Updated book description.",
+  "author": "Updated Author Name"
+}
+
+/// Product routes Worked 😎😎😎
 ###
-GET {{url}}/books/second/5
+GET {{url}}/products/all/
 ###
-GET {{url}}/
+GET {{url}}/products/product/1/
+
+###
+POST {{url}}/products/create
+Content-Type: application/json
+
+{
+  "name": "New Product Name",
+  "description": "New product description.",
+  "price": 19.99
+}
+
+###
+PATCH {{url}}/products/update-product/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Updated Product Name",
+  "description": "Updated product description.",
+  "price": 19.99
+}
+
+###
+DELETE {{url}}/products/delete/5
