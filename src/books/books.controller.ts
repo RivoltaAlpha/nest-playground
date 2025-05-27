@@ -16,26 +16,33 @@ export class BooksController {
     private readonly booksService: BooksService,
   ) {}
 
-
-  @Get('second')
+  @Get('all')
   async getBooks() {
     const books = await this.booksService.getBooks();
     return books;
   }
 
-  @Get('second/:bookID')
-  async getBook(@Param('bookID') bookID) {
-    const book = await this.booksService.getBook(bookID);
+  @Get('get/:bookID')
+  async getBook(@Param('bookID') bookID: string) {
+    const book = await this.booksService.getBook(+bookID); // convert to number if needed
     return book;
   }
 
-  @Post('second')
+  @Post('create')
   async addBook(@Body() createBookDTO: CreateBookDto) {
     const book = await this.booksService.addBook(createBookDTO);
     return book;
   }
+  @Patch('update/:id')
+  async updateBook(
+    @Param('id') id: string,
+    @Body() createBookDTO: CreateBookDto
+  ) {
+    const book = await this.booksService.updateBook(+id, createBookDTO);
+    return book;
+  }
 
-  @Delete('second/:id')
+  @Delete('delete/:id')
   async deleteBook(@Param('id') id: string) {
     const books = await this.booksService.deleteBook(+id);
     return books;

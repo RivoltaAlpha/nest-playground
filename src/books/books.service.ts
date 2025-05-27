@@ -1,6 +1,7 @@
 import { Injectable, HttpException } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BOOKS } from '../mocks/books.mock';
+import { IBook } from './entities/book.entity';
 
 @Injectable()
 export class BooksService {
@@ -22,12 +23,37 @@ export class BooksService {
       resolve(book);
     });
   }
-  addBook(book: CreateBookDto): Promise<any> {
-    return new Promise((resolve) => {
-      this.books.push(book);
-      resolve(this.books);
-    });
+
+  addBook(book: IBook) {
+    const lastId = this.books[this.books.length - 1].id;
+    const newBook = {
+      id: lastId + 1,
+      title: book.title,
+      description: book.description,
+      author: book.author,
+    };
+    this.books.push(newBook);
+    console.log('This action adds a new book');
+    return newBook;
   }
+
+  updateBook(id: number, book: IBook) {
+    const index = this.books.findIndex((p) => p.id === id);
+    if (index !== -1) {
+      const updatedbook = {
+        id,
+        title: book.title,
+        description: book.description,
+        author: book.author,
+      };
+      this.books[index] = updatedbook;
+      console.log(`This action updates a #${id} book`);
+      return updatedbook;
+    } else {
+      return `book with id ${id} not found`;
+    }
+  }
+
   deleteBook(bookID: number): Promise<any> {
     return new Promise((resolve) => {
       const index = this.books.findIndex((book) => book.id === bookID);
