@@ -12,7 +12,7 @@ export class CreateOrderDto {
 
     @IsOptional()
     @IsArray()
-    items: OrderItem[];
+    items?: OrderItem[];
 
     @IsNotEmpty()
     @IsNumber()
