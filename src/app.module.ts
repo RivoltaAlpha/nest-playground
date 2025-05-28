@@ -5,9 +5,15 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { BooksModule } from './books/books.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UsersModule, ProductsModule, OrdersModule, BooksModule],
+  imports: [UsersModule, ProductsModule, OrdersModule, BooksModule,
+    ConfigModule.forRoot({
+      		isGlobal: true,
+      		envFilePath: '.env',
+   	 }),
+	],
   controllers: [AppController],
   providers: [AppService],
 })
