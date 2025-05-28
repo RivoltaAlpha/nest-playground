@@ -25,4 +25,3 @@ export class User {
   updatedAt: Date;
 
 }
-- Defined User entity with properties and decorators in user.entity.ts
