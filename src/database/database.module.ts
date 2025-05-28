@@ -19,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         logging: configService.getOrThrow<boolean>('DB_LOGGING', false),
         migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
       }),
-      inject: [ConfigService],
+      inject: [ConfigService], // Inject ConfigService to access configuration values
     }),
   ],
 })
