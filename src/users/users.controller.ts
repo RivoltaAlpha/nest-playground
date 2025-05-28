@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -15,10 +16,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
+@Post()
+create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
+  this.usersService.create(createUserDto);
+  console.log('This action adds a new user');
+  return createUserDto;
+}
 
   @Get()
   findAll() {
