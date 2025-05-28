@@ -6,6 +6,7 @@ import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { BooksModule } from './books/books.module';
 import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [UsersModule, ProductsModule, OrdersModule, BooksModule,
@@ -13,6 +14,7 @@ import { ConfigModule } from '@nestjs/config';
       		isGlobal: true,
       		envFilePath: '.env',
    	 }),
+    DatabaseModule,
 	],
   controllers: [AppController],
   providers: [AppService],
